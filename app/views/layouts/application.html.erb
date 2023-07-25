@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Src</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-  </head>
+<html lang="ja">
+<head>
+  <!-- title -->
+  <title>SNS App</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+</head>
 
-  <body>
-    <%= yield %>
-  </body>
+<body>
+
+  <!-- Javascript -->
+  <script src="<%= mix('/js/app.js') %>"></script>
+</body>
 </html>
