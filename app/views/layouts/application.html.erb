@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <!-- title -->
-  <title>SNS App</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-</head>
+  <head>
+    <!--  アプリケーションのタイトル -->
+    <title>Omusubi Classroom</title>
+    <!-- ウェブページがモバイルデバイスやレスポンシブデザインをサポートするブラウザ上でどのように表示されるべきかを制御します。 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- CSRF Token 後の章で説明します -->
+    <%= csrf_meta_tags %>
+    <!-- Railsの機能を使用してアプリケーションのセキュリティを向上させるための記述です -->
+    <%= csp_meta_tag %>
+    <!-- Style -->
+    <link rel="stylesheet" href="<%= mix('/css/app.css') %>">
+    <!-- Javascript -->
+    <script src="<%= mix('/js/bootstrap.js') %>"></script>
+    <!-- turbo.jsを追加します -->
+    <script src="<%= mix('/js/turbo.js') %>"></script>
+  </head>
 
-<body>
+  <body>
 
-  <!-- Javascript -->
-  <script src="<%= mix('/js/app.js') %>"></script>
-</body>
+    <!--　ここにコンテンツが挿入されます -->
+    <%= yield %>
+  </body>
 </html>

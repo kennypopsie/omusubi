@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   #Channel Controller
-  get 'channel/new', to: 'channel#new', as: 'new_channel'
+  get '/', to: 'channel#new', as: 'new_channel'
 
 end
