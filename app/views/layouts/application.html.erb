@@ -35,7 +35,7 @@
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
             </li>
             <li>
-              <%= link_to "チャンネル一覧", "/", class: "nav-link" %>
+              <%= link_to "チャンネル", "/", class: "nav-link" %>
               
             </li>
             <li>
@@ -46,6 +46,16 @@
               <%= link_to "マイページ編集", edit_user_registration_path, class: "nav-link" %>
               
             </li>
+            
+            <li>
+              <%= link_to "投稿一覧", index_post_path, class: "nav-link" %>
+              
+            </li>
+            
+            <li>
+              <%= link_to "投稿ページ", new_post_path, class: "nav-link" %>
+              
+            </li>            
           <% else %>
             <!-- ログインしていない場合に表示されます -->
             <!-- else 以降は前述のif文の否定になります -->
