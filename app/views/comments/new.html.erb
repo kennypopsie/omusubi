@@ -40,5 +40,27 @@
         <p class="timestamp"><%= comment.created_at.strftime("%B %d, %Y") %></p>
       </div>
     </div>
+    
+ <div class="layer js-modal">
+    <div class="modal">
+      <div class="modal__inner">
+        <div class="modal__button-wrap">
+          <button class="close-button js-close-button">
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+        <div class="modal__contents">
+          <div class="modal__content">
+            コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="button js-modal-button">コメント編集</button>
   <% end %>
+
+  
 </div>

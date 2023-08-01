@@ -16,5 +16,9 @@ mix.setPublicPath('public')
     .js('app/javascript/app.js', 'public/js/app.js')
     .js('app/javascript/bootstrap.js', 'public/js/bootstrap.js')
     
-    .js('app/javascript/turbo.js', 'public/js/turbo.js');
+    .js('app/javascript/turbo.js', 'public/js/turbo.js')
+    .js('app/javascript/modal-window.js', 'public/js/modal-window.js');
+
+
+    
     
