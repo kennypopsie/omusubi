@@ -5,19 +5,24 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   #Channel Controller
-  get '/', to: 'channel#new', as: 'new_channel'
-  # post 'channel/new', to: 'posts#create', as: 'create_post'
 
-  #posts controller
-  get 'posts/new', to: 'posts#new', as: 'new_post'
-  post 'posts/new', to: 'posts#create', as: 'create_post'
-  get 'posts/index', to: 'posts#index', as: 'index_post'
+  #channels controller
+  get 'channels/new', to: 'channels#new', as: 'new_channel'
+  post 'channels/new', to: 'channels#create', as: 'create_channel'
+  get '/', to: 'channels#index', as: 'index_channel'
 
  
-  get 'posts/edit/:id', to: 'posts#edit', as: 'edit_post'
-  post 'posts/edit/:id', to: 'posts#update', as: 'update_post'
-  delete 'posts/destroy/:id', to: 'posts#destroy', as: 'destroy_post'
+  get 'channels/edit/:id', to: 'channels#edit', as: 'edit_channel'
+  post 'channels/edit/:id', to: 'channels#update', as: 'update_channel'
+  delete 'channels/destroy/:id', to: 'channels#destroy', as: 'destroy_channel'
 
   get 'users/show', to: 'users#show', as: 'show_user'
+  
+    # ここから追加
+  # CommentsController
+  get 'channels/show/:post_id/comments/new', to: 'comments#new', as: 'new_comment'
+  post 'channels/show/:post_id/comments/new', to: 'comments#create', as: 'create_comment'
+  # ここまで
+
 
 end

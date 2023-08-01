@@ -1,4 +1,4 @@
-class PostsController < ApplicationController
+class ChannelsController < ApplicationController
   
   def index
   @posts = Post.all
@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
 
     if @post.save
-      redirect_to index_post_path
+      redirect_to index_channel_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -32,7 +32,7 @@ class PostsController < ApplicationController
       @post.image.attach(params[:post][:image])
     end
     if @post.update(post_params)
-      redirect_to index_post_path, notice: '更新しました'
+      redirect_to index_channel_path, notice: '更新しました'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -43,7 +43,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to index_post_path, notice: '削除しました'
+    redirect_to index_channel_path, notice: '削除しました'
   end
   # ここまで
 
