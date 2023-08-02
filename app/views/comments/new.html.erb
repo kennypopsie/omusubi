@@ -10,20 +10,17 @@
 <div class="comment-form-container">
   <div class="comment">
     <%= form_with(url: create_comment_path(@post), model: @comment, local: true, method: :post) do |f| %>
-
       <% if @comment.errors.any? %>
         <ul>
           <% @comment.errors.full_messages.each do |message| %>
             <li><%= message %></li>
           <% end %> </ul>
       <% end %>
-
       <div class="form">
         <div class="textarea">
           <%= f.label "コメント", class: 'form-label' %>
           <%= f.text_field :content, class: 'form-control' %>
         </div>
-
         <div class="button-group">
           <%= f.submit '送信', class: 'btn btn-primary' %>
         </div>
@@ -39,28 +36,26 @@
         <p class="content"><%= comment.content %></p>
         <p class="timestamp"><%= comment.created_at.strftime("%B %d, %Y") %></p>
       </div>
-    </div>
-    
- <div class="layer js-modal">
-    <div class="modal">
-      <div class="modal__inner">
-        <div class="modal__button-wrap">
-          <button class="close-button js-close-button">
-            <span></span>
-            <span></span>
-          </button>
-        </div>
-        <div class="modal__contents">
-          <div class="modal__content">
-            コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。コンテンツが入ります。
+      <!-- 編集ボタン -->
+      <button class="button js-modal-button" data-target="#modal<%= comment.id %>">コメント編集</button>
+      <!-- モーダル -->
+      <div id="modal<%= comment.id %>" class="layer js-modal">
+        <div class="modal">
+          <div class="modal__inner">
+            <div class="modal__button-wrap">
+              <button class="close-button js-close-button">
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+            <div class="modal__contents">
+              <div class="modal__content">
+                <%= comment.content %>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-
-  <button class="button js-modal-button">コメント編集</button>
   <% end %>
-
-  
 </div>
