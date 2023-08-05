@@ -9,7 +9,14 @@ class ChannelsController < ApplicationController
     render :new
   end
   
-    
+  def show
+    @post = Post.find(params[:id])
+    @comment = Comment.new
+    # @comment = Comment.find(params[:post_id])
+    @comments = Comment.where(post_id: params[:post_id])
+    render :show
+  end
+  
   def create
     @post = Post.new(post_params)
 
@@ -51,6 +58,11 @@ class ChannelsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :body)
+  end
+  
+
+  def comment_params
+    params.require(:comment).permit(:content, :id).merge(post_id: params[:post_id])
   end
   
   
