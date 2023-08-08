@@ -1,4 +1,4 @@
-class Post < ApplicationRecord
+class Channel < ApplicationRecord
     # Validation
   validates :title, presence: true
   # validates :body, presence: true

@@ -16,15 +16,16 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    @comment.post_id = params[:post_id] # post_idを設定
+    @comment.channel_id = params[:id] # post_idを設定
+
 
     if @comment.save
-      redirect_to new_comment_path(params[:post_id]), notice: 'コメントしました'
+      redirect_to channel_path(params[:id]), notice: 'コメントしました'
     else
       # 失敗した場合には app/views/posts/show.html.erb で必要な変数を取得します
-      @post = Post.find(params[:post_id])
-      @comments = Comment.where(post_id: params[:post_id])
-      render :new, status: :unprocessable_entity
+      @channel = Channel.find(params[:id])
+      @comments = Comment.where(channel_id: params[:id])
+      render "channels/show", status: :unprocessable_entity
     end
   end
   
@@ -42,13 +43,14 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to new_comment_path, notice: '削除しました'
+    redirect_to channel_path, notice: '削除しました'
   end
   # ここまで
 
   private
   def comment_params
-    params.require(:comment).permit(:content, :id).merge(post_id: params[:post_id])
+
+    params.require(:comment).permit(:content, :id).merge(channel_id: params[:channel_id])
   end
 end
 
