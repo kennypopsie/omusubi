@@ -6,18 +6,17 @@ class CommentsController < ApplicationController
   #   render :new
   # end
 
-  def new
-    @post = Post.find(params[:post_id])
-    @comment = Comment.new
-    # @comment = Comment.find(params[:post_id])
-    @comments = Comment.where(post_id: params[:post_id])
-    render :new
-  end
+  # def new
+  #   @post = Post.find(params[:post_id])
+  #   @comment = Comment.new
+  #   # @comment = Comment.find(params[:post_id])
+  #   @comments = Comment.where(post_id: params[:post_id])
+  #   render :new
+  # end
 
   def create
-    @comment = Comment.new(comment_params)
+    @comment = Comment.new (comment_params)
     @comment.channel_id = params[:id] # post_idを設定
-
 
     if @comment.save
       redirect_to channel_path(params[:id]), notice: 'コメントしました'

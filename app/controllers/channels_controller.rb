@@ -16,7 +16,7 @@ class ChannelsController < ApplicationController
     puts '-----------------------------------------------------'
     @comments.each do |comment|
       puts comment.content
-      puts comment.post_id
+      puts comment.channel_id
     end
     puts '-----------------------------------------------------'
 
