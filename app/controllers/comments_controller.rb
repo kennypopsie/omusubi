@@ -49,7 +49,7 @@ class CommentsController < ApplicationController
   private
   def comment_params
 
-    params.require(:comment).permit(:content, :id).merge(channel_id: params[:channel_id])
+    params.permit(:content, :id).merge(channel_id: params[:channel_id])
   end
 end
 

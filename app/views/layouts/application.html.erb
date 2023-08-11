@@ -21,7 +21,7 @@
   </head>
 
   <body>
-  <div class="main-container">
+  <!--<div class="main-container">-->
     <!--  ナビゲーションバー -->
     <nav class="custom-navbar">
       <div id="menuToggle">
@@ -35,9 +35,14 @@
             <!-- ログインしている場合に表示されます -->
             <!-- user_signed_in? は device が提供している認証済みかを判定するメソッドです -->
             <li>
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
+              <%= link_to "チャンネル一覧", index_channel_path, class: "nav-link" %>
+              
             </li>
-
+            
+            <li>
+              <%= link_to "新規チャンネル作成", new_channel_path, class: "nav-link" %>
+              
+            </li>     
             <li>
               <%= link_to "マイページ", show_user_path, class: "nav-link" %>
               
@@ -46,16 +51,10 @@
               <%= link_to "マイページ編集", edit_user_registration_path, class: "nav-link" %>
               
             </li>
-            
             <li>
-              <%= link_to "チャンネル一覧", index_channel_path, class: "nav-link" %>
-              
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
             </li>
-            
-            <li>
-              <%= link_to "新規チャンネル作成", new_channel_path, class: "nav-link" %>
-              
-            </li>            
+
           <% else %>
             <!-- ログインしていない場合に表示されます -->
             <!-- else 以降は前述のif文の否定になります -->
@@ -69,9 +68,23 @@
           <!-- ここまで-->
         </ul>
       </div>
+      
+        <ul class="icon-list">
+          <li class="icon">顔</li>
+          <li class="icon">顔</li>
+          <li class="icon">顔</li>
+          <li class="icon">顔</li>
+        </ul>
+        
+      
+      
     </nav>
 
-    <!-- アラートメッセージ -->
+
+  <div class="wrapper">
+   <div class="side-bar"></div>
+    <div class="bg-white text-dark">
+          <!-- アラートメッセージ -->
     <% if notice %>
       <div class="alert alert-success" role="alert">
         <%= notice %>
@@ -82,11 +95,10 @@
         <%= alert %>
       </div>
     <% end %>
-
-    <div class="bg-white text-dark">
       <%= yield %>
     </div>
-  </div>
+   </div>
+  <!--</div>-->
   <!-- Javascript -->
   <script src="<%= mix('/js/app.js') %>"></script>
   </body>
