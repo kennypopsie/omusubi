@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
 
     if @comment.update(comment_params)
-      redirect_to new_comment_path, notice: '更新しました'
+      redirect_to request.referer, notice: '更新しました'
     else
       render :edit, status: :unprocessable_entity
     end 
@@ -42,14 +42,17 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    redirect_to channel_path, notice: '削除しました'
+    redirect_to request.referer, notice: '削除しました'
   end
   # ここまで
 
   private
   def comment_params
-
-    params.permit(:content, :id).merge(channel_id: params[:channel_id])
+    params.permit(:content)
   end
+  # def comment_params
+
+  #   params.permit(:content, :id).merge(channel_id: params[:channel_id])
+  # end
 end
 

@@ -13,12 +13,12 @@ class ChannelsController < ApplicationController
 
     @channel = Channel.find(params[:id])
     @comments = @channel.comments
-    puts '-----------------------------------------------------'
-    @comments.each do |comment|
-      puts comment.content
-      puts comment.channel_id
-    end
-    puts '-----------------------------------------------------'
+    # puts '-----------------------------------------------------'
+    # @comments.each do |comment|
+    #   puts comment.content
+    #   puts comment.channel_id
+    # end
+    # puts '-----------------------------------------------------'
 
     render :show
   end
@@ -41,9 +41,9 @@ class ChannelsController < ApplicationController
 
   def update
     @channel = Channel.find(params[:id])
-    if params[:channel][:image]
-      @channel.image.attach(params[:channel][:image])
-    end
+    # if params[:channel][:image]
+    #   @channel.image.attach(params[:channel][:image])
+    # end
     if @channel.update(channel_params)
       redirect_to index_channel_path, notice: '更新しました'
     else

@@ -116,6 +116,8 @@ a .nav-link {
 .wrapper {
   display: flex;
   height: 100vh;
+  position: fixed;
+  width: 100%;
 
 }
 
@@ -126,5 +128,6 @@ a .nav-link {
 }
 .icon {
   margin-right: 10px;
-  
+  width: 30px;
+  border-radius: 50%;
 }

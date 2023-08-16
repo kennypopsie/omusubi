@@ -1,24 +1,25 @@
 <div class="device-container">
   <div class="form-container">
-    <h2>Edit <%= resource_name.to_s.humanize %></h2>
+    <h2>ユーザー編集</h2>
+    <br />
     
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
     
       <!--アカウント編集時に名前を入力できるようにフォームを追加-->
       <div class="field">
-        <%= f.label :name %><br />
+        <%= f.label :名前 %>
         <%= f.text_field :name, autofocus: true %>
       </div>
-      
+      <br />
       <!--アカウント編集時にプロフィールを入力できるようにフォームを追加-->
       <div class="field">
-        <%= f.label :profile %><br />
+        <%= f.label :プロフィール %>
         <%= f.text_area :profile, autofocus: true %>
       </div>
-      
+      <br />
       <div class="field">
-        <%= f.label :email %><br />
+        <%= f.label :email %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
     
@@ -27,33 +28,32 @@
       <% end %>
     
       <div class="field">
-        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+        <%= f.label :新しいパスワード %> <i>(変更しない場合は空白)</i>
         <%= f.password_field :password, autocomplete: "new-password" %>
         <% if @minimum_password_length %>
+          <em>最低 <%= @minimum_password_length %> 文字以上</em>
           <br />
-          <em><%= @minimum_password_length %> characters minimum</em>
         <% end %>
       </div>
     
       <div class="field">
-        <%= f.label :password_confirmation %><br />
+        <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
       </div>
-    
+      <br />
       <div class="field">
-        <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+        <%= f.label :現在のパスワード %> <i>(ユーザー編集のためパスワードを入力してください)</i>
         <%= f.password_field :current_password, autocomplete: "current-password" %>
       </div>
     
       <div class="actions">
-        <%= f.submit "Update" %>
+        <%= f.submit "編集" %>
       </div>
     <% end %>
-    
-    <h3>Cancel my account</h3>
-    
-    <div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-    
-    <%= link_to "Back", :back %>
+    <br />
+    <h3>アカウントの消去</h3>
+    <div><%= button_to "アカウントを消去", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
+    <br />
+    <%= link_to "戻る", :back %>
   </div>
 </div>
