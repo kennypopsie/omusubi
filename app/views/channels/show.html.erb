@@ -1,5 +1,5 @@
 <div class="post-list">
-  <a class="post" href="<%= edit_channel_path(@channel)%>">
+  <a class="post" href="<%= edit_channel_path(@channel) %>">
     <div class="header">
       <h2 class="title"><%= @channel.title %></h2>
       <p class="timestamp"><%= @channel.created_at.strftime("%B %d, %Y") %></p>
@@ -29,7 +29,7 @@
       <div class="body">
         <p class="content"><%= comment.content %></p>
         <p class="timestamp"><%= comment.created_at.strftime("%B %d, %Y") %></p>
-         <p class="username"><%= @user.name %></p>
+        <p class="username">投稿者 <%= comment.user.name %></p>
       </div>
       
       <!-- 編集ボタン -->

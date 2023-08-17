@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener('turbo:load', (event) => {
   // モーダルを開くボタンを全て取得
   const buttons = document.querySelectorAll('.js-modal-button');
 

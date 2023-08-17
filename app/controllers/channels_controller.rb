@@ -13,8 +13,9 @@ class ChannelsController < ApplicationController
 
     @channel = Channel.find(params[:id])
     @comments = @channel.comments
-    @comment = Comment.find_by(id: params[:id])
-    @user = User.find_by(id: @comment.user_id)
+    
+    # @comment = Comment.find_by(id: params[:id])
+    # @user = User.find_by(id: @comment.user_id)
     # puts '-----------------------------------------------------'
     # @comments.each do |comment|
     #   puts comment.content

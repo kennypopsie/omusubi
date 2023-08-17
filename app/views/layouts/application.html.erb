@@ -28,14 +28,30 @@
   <!--<div class="main-container">-->
     <!--  ナビゲーションバー -->
     <nav class="custom-navbar">
-      <div id="menuToggle">
-        <input type="checkbox" />
-        <span></span>
-        <span></span>
-        <span></span>
-        <ul id="menu">
-          <!-- ここから追加-->
-          <% if user_signed_in? %>
+     
+    <div></div>
+      
+        <ul class="icon-list">
+          
+          <li class="icon"><%= image_tag "sticker_louie_louie.png", size: "30x30" %></li>
+          <li class="icon"><%= image_tag "sticker_louie_louie.png", size: "30x30" %></li>
+          <li class="icon"><%= image_tag "sticker_louie_louie.png", size: "30x30" %></li>
+          <li class="icon"><%= image_tag "sticker_louie_louie.png", size: "30x30" %></li>
+          <li class="icon"><%= image_tag "sticker_louie_louie.png", size: "30x30" %></li>
+          <li class="icon"><%= image_tag "sticker_louie_louie.png", size: "30x30" %></li>
+          <li class="icon"><%= image_tag "sticker_louie_louie.png", size: "30x30" %></li>
+          <li class="icon"><%= image_tag "sticker_louie_louie.png", size: "30x30" %></li>
+        </ul>
+        
+      
+      
+    </nav>
+
+
+  <div class="wrapper">
+   <div class="side-bar">
+     <ul>
+        <% if user_signed_in? %>
             <!-- ログインしている場合に表示されます -->
             <!-- user_signed_in? は device が提供している認証済みかを判定するメソッドです -->
             <li>
@@ -70,28 +86,8 @@
             </li>
           <% end %>
           <!-- ここまで-->
-        </ul>
+        </ul>   
       </div>
-      
-        <ul class="icon-list">
-          
-          <li class="icon"><%= image_tag "sticker_louie_louie.png", size: "30x30" %></li>
-          <li class="icon"><%= image_tag "sticker_louie_louie.png", size: "30x30" %></li>
-          <li class="icon"><%= image_tag "sticker_louie_louie.png", size: "30x30" %></li>
-          <li class="icon"><%= image_tag "sticker_louie_louie.png", size: "30x30" %></li>
-          <li class="icon"><%= image_tag "sticker_louie_louie.png", size: "30x30" %></li>
-          <li class="icon"><%= image_tag "sticker_louie_louie.png", size: "30x30" %></li>
-          <li class="icon"><%= image_tag "sticker_louie_louie.png", size: "30x30" %></li>
-          <li class="icon"><%= image_tag "sticker_louie_louie.png", size: "30x30" %></li>
-        </ul>
-        
-      
-      
-    </nav>
-
-
-  <div class="wrapper">
-   <div class="side-bar"></div>
     <div class="bg-white text-dark">
           <!-- アラートメッセージ -->
     <% if notice %>

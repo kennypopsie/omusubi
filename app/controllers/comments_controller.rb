@@ -34,7 +34,7 @@ class CommentsController < ApplicationController
     if @comment.update(comment_params)
       redirect_to request.referer, notice: '更新しました'
     else
-      render :edit, status: :unprocessable_entity
+      render "channels/show", status: :unprocessable_entity
     end 
   end 
   
