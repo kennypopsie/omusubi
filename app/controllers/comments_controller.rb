@@ -15,9 +15,9 @@ class CommentsController < ApplicationController
   # end
 
   def create
-    @comment = Comment.new (comment_params)
+    @comment = Comment.new(comment_params)
     @comment.channel_id = params[:id] # post_idを設定
-
+    @comment.user_id = current_user.id
     if @comment.save
       redirect_to channel_path(params[:id]), notice: 'コメントしました'
     else
