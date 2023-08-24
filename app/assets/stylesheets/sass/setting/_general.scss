@@ -27,3 +27,28 @@ body {
   font-size: 12px;
 
 }
+
+.channel-index-ul{
+  width: 500px;
+  list-style: none; 
+}
+.channel-index-list{
+  display: flex;
+  justify-content: space-between;
+  padding:15px;
+  border-bottom:1px solid #000;
+}
+
+.day{
+  
+}
+.label{
+  background-color:blue;
+  border-radius:3px;
+  color:#fff;
+  padding:2px 5px;
+  margin:0 20px;
+}
+.text{
+  
+}

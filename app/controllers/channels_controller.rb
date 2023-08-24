@@ -5,12 +5,13 @@ class ChannelsController < ApplicationController
   end
   
   def new
+    # @channels = Channel.all
     @channel = Channel.new
     render :new
   end
   
   def show
-
+    # @channels = Channel.all
     @channel = Channel.find(params[:id])
     @comments = @channel.comments
     
@@ -38,6 +39,7 @@ class ChannelsController < ApplicationController
   
     # ここから追加
   def edit
+    @channels = Channel.all
     @channel = Channel.find(params[:id])
     render :edit
   end

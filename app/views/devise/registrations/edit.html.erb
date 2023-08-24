@@ -12,6 +12,12 @@
         <%= f.text_field :name, autofocus: true %>
       </div>
       <br />
+      <div class="field">
+        <%= f.label :プロフィール写真 %>
+        <%= f.file_field :image %>
+      </div>
+     
+      <br />
       <!--アカウント編集時にプロフィールを入力できるようにフォームを追加-->
       <div class="field">
         <%= f.label :プロフィール %>
@@ -27,6 +33,7 @@
         <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
       <% end %>
     
+      
       <div class="field">
         <%= f.label :新しいパスワード %> <i>(変更しない場合は空白)</i>
         <%= f.password_field :password, autocomplete: "new-password" %>

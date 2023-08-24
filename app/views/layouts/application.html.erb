@@ -74,7 +74,7 @@
             <li>
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
             </li>
-
+     
           <% else %>
             <!-- ログインしていない場合に表示されます -->
             <!-- else 以降は前述のif文の否定になります -->
@@ -86,7 +86,23 @@
             </li>
           <% end %>
           <!-- ここまで-->
-        </ul>   
+          
+          <p class="channel">-----チャンネル-----</p>
+          
+            <li>  
+               <% @channels.each do |channel| %>
+               <a class="nav-link" href="<%= channel_path(channel)  %>">
+               <p><%= channel.title %></p>
+               </a>
+               <% end %>
+            </li>
+          
+          
+        </ul>  
+
+
+        
+        
       </div>
     <div class="bg-white text-dark">
           <!-- アラートメッセージ -->

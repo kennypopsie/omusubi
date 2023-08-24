@@ -1,18 +1,18 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 mx-auto post-form-container">
-         <h2 class="h2">チャンネル一覧ページ</h2>
-
-   <% @channels.each do |post| %>
-     <a class="post" href="<%= channel_path(post)  %>">
-
-       <h3><%= post.title %></h3> 
-        <div class="button-group">
-          <!-- 以下の行を追加する -->
-          <%= link_to '編集', edit_channel_path(post), class: 'btn btn-primary' %>
-        </div>
-   <% end %>
-   
+      <h2 class="h2">チャンネル一覧ページ</h2>
+         <ul class="channel-index-ul">
+         <% @channels.each do |channel| %>
+         <li class="channel-index-list">
+         <a class="post" href="<%= channel_path(channel)  %>">
+         <h3><%= channel.title %></h3> 
+              <div class="button-group">
+                <!-- 以下の行を追加する -->
+                <%= link_to '編集', edit_channel_path(channel), class: 'btn btn-primary' %>
+                <% end %>
+               </div>
+      </div>
     </div>
-  </div>
+
 </div>
