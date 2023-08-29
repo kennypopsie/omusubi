@@ -10,12 +10,14 @@ class ApplicationController < ActionController::Base
     @channels = Channel.all
   end
   
+
+  
   protected
   def configure_permitted_parameters
     # サインアップ時にnameのストロングパラメータを追加
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :image])
     # アカウント編集の時にnameとprofileのストロングパラメータを追加
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :profile])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :profile, :image])
   end
 
 end

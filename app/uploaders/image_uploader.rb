@@ -20,6 +20,17 @@ class ImageUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+  def default_url # デフォルトの画像ファイル
+    'sticker_louie_louie.png'
+  end
+  
+  def extension_whitelist # 拡張子の制限
+    %w[jpg jpeg gif png]
+  end
+  
+  # include CarrierWave::MiniMagick
+  # process resize_to_fit: [100, 100]
+  
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
   #   # For Rails 3.1+ asset pipeline compatibility:

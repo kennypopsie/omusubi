@@ -270,6 +270,7 @@ DEPENDENCIES
   dotenv-rails
   importmap-rails
   jbuilder
+  mini_magick (~> 4.5, >= 4.5.1)
   mysql2
   pry-byebug
   puma (~> 5.0)

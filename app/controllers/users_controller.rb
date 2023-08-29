@@ -17,9 +17,9 @@ def update
   end
 end
 #省略
-private
-def user_params
-  params.require(:user).permit(:name, :email, :image)
-end
+# private
+# def user_params
+#   params.require(:user).permit(:name, :email, :image, :image_cache)
+# end
   
 end

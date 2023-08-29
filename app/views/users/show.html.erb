@@ -4,7 +4,6 @@
       <br />
           <% if @user.image? %>
           <%= image_tag @user.image.url %>
-          <%= image_tag user.image.variant(resize: '500x500') %>
           
           <% else %>
             <%= image_tag ("sticker_louie_louie.png"), width: "50%" %>
