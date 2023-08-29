@@ -2,7 +2,7 @@
   <a class="post" href="<%= edit_channel_path(@channel) %>">
     <div class="header">
       <h2 class="title"><%= @channel.title %></h2>
-      <p class="timestamp"><%= @channel.created_at.strftime("%B %d, %Y") %></p>
+      <p class="timestamp"><%= @channel.created_at.strftime("%Y/%m/%d") %></p>
     </div>
   </a>
 </div>
@@ -28,12 +28,17 @@
     <div class="comment">
       <div class="body">
         <p class="content"><%= comment.content %></p>
-        <p class="timestamp"><%= comment.created_at.strftime("%B %d, %Y") %></p>
+      </div>
+      <div class="comment-detail">
+        <p class="timestamp"><%= comment.created_at.strftime("%Y/%m/%d %H:%M") %></p>
         <p class="username">投稿者 <%= comment.user.name %></p>
       </div>
-      
+      <div class="comment-edit">
+      <%= link_to '削除', destroy_comment_path(comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "destroy" %>
+
       <!-- 編集ボタン -->
-      <button class="button js-modal-button" data-target="#modal<%= comment.id %>">編集</button>
+      <button class="edit js-modal-button" data-target="#modal<%= comment.id %>">編集</button>
+      
       <!-- モーダル -->
       <div id="modal<%= comment.id %>" class="layer js-modal">
         <div class="modal">
@@ -58,6 +63,7 @@
                     </div>
 
                   <% end %>
+               </div>
              </div>
             </div>
           </div>
@@ -66,6 +72,4 @@
     </div>
   <% end %>
  <%= link_to '一覧に戻る', index_channel_path %>
- 
-
 </div>

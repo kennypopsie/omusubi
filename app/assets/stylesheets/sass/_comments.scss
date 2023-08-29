@@ -38,12 +38,12 @@
     text-decoration: none;
 
     .body {
-      display: grid;
-      grid-template-columns: 1fr 100px;
-      column-gap: 8px;
+      // display: grid;
+      // grid-template-columns: 1fr 100px;
+      // column-gap: 8px;
 
       .content {
-        margin: 0;
+        margin-bottom: 30px;
         font-size: 17px;
       }
 
@@ -57,4 +57,17 @@
       }
     }
   }
+}
+
+.comment-detail {
+  display: flex;
+}
+
+.timestamp {
+  font-size: 12px;
+}
+
+.comment-edit {
+  display: flex;
+  justify-content: space-between;
 }

@@ -9,8 +9,11 @@ class ApplicationController < ActionController::Base
   def get_channels_name
     @channels = Channel.all
   end
-  
 
+  before_action :get_user_icon
+  def get_user_icon
+    @user = current_user
+  end
   
   protected
   def configure_permitted_parameters
