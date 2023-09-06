@@ -4,4 +4,5 @@ class Comment < ApplicationRecord
 
   belongs_to :channel, optional: true
   belongs_to :user
+  has_many :replies, dependent: :destroy
 end

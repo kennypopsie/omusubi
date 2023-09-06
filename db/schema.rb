@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_20_132925) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_04_080949) do
   create_table "active_storage_attachments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -49,10 +49,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_132925) do
   create_table "comments", charset: "utf8mb4", force: :cascade do |t|
     t.string "content"
     t.bigint "channel_id", null: false
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
     t.index ["channel_id"], name: "index_comments_on_channel_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "replies", charset: "utf8mb4", force: :cascade do |t|
+    t.string "content"
+    t.bigint "user_id"
+    t.bigint "comment_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_replies_on_comment_id"
+    t.index ["user_id"], name: "index_replies_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
@@ -73,4 +84,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_20_132925) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "channels"
+  add_foreign_key "comments", "users"
+  add_foreign_key "replies", "comments"
+  add_foreign_key "replies", "users"
 end

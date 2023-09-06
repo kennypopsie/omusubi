@@ -71,3 +71,32 @@
       <%= form.submit %>
       </div>
      <% end %>
+
+
+
+<div class="comment-list">
+  <% @comments.each do |comment| %>
+    <div class="comment">
+      <div class="body">
+        <p class="content"><%= comment.content %></p>
+      </div>
+    </div>
+      <div class="comment-form-container">
+  <div class="comment">
+    <%= form_with(url: create_reply_path, model: @reply, local: true, method: :post) do |f| %>
+      <div class="form">
+        <div class="textarea">
+          <%= f.label "コメント", class: 'form-label' %>
+          <%= f.text_field :content, class: 'form-control' %>
+        </div>
+        <div class="button-group">
+          <%= f.submit '送信', class: 'btn btn-primary' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+      <% end %>
+</div>

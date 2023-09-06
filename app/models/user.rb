@@ -10,6 +10,7 @@ class User < ApplicationRecord
   validates :profile, length: { maximum: 200 } #追記
 
   has_many :comments, dependent: :destroy
+  has_many :replies, dependent: :destroy
 
   has_one_attached :image
 

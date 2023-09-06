@@ -25,6 +25,13 @@ Rails.application.routes.draw do
 
   get 'users/show', to: 'users#show', as: 'show_user'
   
+  get 'replies/show', to: 'replies#show', as: 'show_reply'
+  get 'replies/:id', to: 'replies#new', as: 'new_reply'
+  post 'replies/:id', to: 'replies#create', as: 'create_reply'
+  patch 'replies/:id', to: 'replies#update', as: 'update_reply'
+  delete 'replies/:id', to: 'replies#destroy', as: 'destroy_reply'
+  
+  
     # ここから追加
   # CommentsController
   # get 'channels/show/:post_id/comments/new', to: 'comments#new', as: 'new_comment'
