@@ -33,12 +33,10 @@
      <% if user_signed_in? %>
 
         <ul class="icon-list">
-          <li class="icon"><%= image_tag "sticker_louie_louie.png", size: "30x30" %></li>
-          <li class="icon"><%= image_tag "sticker_louie_louie.png", size: "30x30" %></li>
-          <li class="icon"><%= image_tag "sticker_louie_louie.png", size: "30x30" %></li>
-          <li class="icon"><%= image_tag "sticker_louie_louie.png", size: "30x30" %></li>
-          <li class="icon"><%= image_tag "sticker_louie_louie.png", size: "30x30" %></li>
-          <li class="icon"><%= image_tag "sticker_louie_louie.png", size: "30x30" %></li>
+          <li class="icon"><%= image_tag "kkrn_icon_user_1.png", size: "30x30" %></li>
+          <li class="icon"><%= image_tag "kkrn_icon_user_1.png", size: "30x30" %></li>
+          <li class="icon"><%= image_tag "kkrn_icon_user_1.png", size: "30x30" %></li>
+          <li class="icon"><%= image_tag "kkrn_icon_user_1.png", size: "30x30" %></li>
           <li class="icon"><%= image_tag "sticker_louie_louie.png", size: "30x30" %></li>
           <li class="icon"><%= image_tag @user.image.url, width: "25×25" %></li>
         </ul>
@@ -94,7 +92,7 @@
             <li>  
                <% @channels.each do |channel| %>
                <a class="nav-link" href="<%= channel_path(channel)  %>">
-               <p><%= channel.title %></p>
+               <p class="sidebar-title"><%= channel.title %></p>
                </a>
                <% end %>
             </li>

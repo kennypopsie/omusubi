@@ -29,11 +29,11 @@
   row-gap: 6px;
 
   .comment {
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    // border: 1px solid #ddd;
+    // border-radius: 5px;
     padding: 16px 20px;
     width: 100%;
-    max-width: 600px;
+    // max-width: 800px;
     color: #000;
     text-decoration: none;
 
@@ -45,6 +45,8 @@
       .content {
         margin-bottom: 30px;
         font-size: 17px;
+        padding: 5px 25px;
+
       }
 
       .timestamp {
@@ -61,6 +63,8 @@
 
 .comment-detail {
   display: flex;
+  align-items: center;
+
 }
 
 .timestamp {
@@ -70,4 +74,69 @@
 .comment-edit {
   display: flex;
   justify-content: space-between;
+}
+
+.time-border {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.time-border::before,
+.time-border::after {
+  content: "";
+  flex-grow: 1;
+  border-top: 1px solid black;
+  border-color: #DDDDDD;
+}
+
+.time-border:before {
+  margin-right: 1rem; 
+}
+.time-border:after {
+  margin-left: 1rem; 
+}
+
+.post-list {
+  text-align: center;
+}
+
+.comment-user-name {
+  font-size: 15px;
+  padding: 10px;
+}
+
+.comment-time {
+  color: #616061;
+}
+
+.content {
+  margin-top: 15px;
+}
+
+.replies {
+  
+}
+
+.reply-list {
+  padding: 10px 30px;
+}
+
+.reply-detail {
+  display: flex;
+  align-items: center;
+}
+
+.reply-user-name {
+  font-size: 15px;
+  padding: 10px;
+
+}
+
+.reply-user-image {
+  
+}
+
+.reply-time {
+  
 }

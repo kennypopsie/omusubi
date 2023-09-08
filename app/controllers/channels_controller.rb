@@ -13,7 +13,7 @@ class ChannelsController < ApplicationController
     # @reply = Reply.new
     # このidはurl(ルーティングに記述されている)から引っ張ってくる
     @channel = Channel.find(params[:id])
-    @comments = @channel.comments
+    @comments = @channel.comments.order(created_at: :desc)
     @replies = Reply.all
     render :show
   end

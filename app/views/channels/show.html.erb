@@ -1,12 +1,13 @@
+
 <div class="post-list">
   <a class="post" href="<%= edit_channel_path(@channel) %>">
     <div class="header">
-      <h2 class="title"><%= @channel.title %></h2>
-      <p class="timestamp"><%= @channel.created_at.strftime("%Y/%m/%d") %></p>
+      <h2 class="time-border"><%= @channel.title %></h2>
     </div>
   </a>
 </div>
 
+<!--コメント欄-->
 <div class="comment-form-container">
   <div class="comment">
     <!--model: @contentはinput actionがcommentになる。commentにデータが送られる。-->
@@ -24,25 +25,32 @@
     <% end %>
   </div>
 </div>
-
-<div class="comment-list">
+　
+　　<div class="comment-list">
   <% @comments.each do |comment| %>
+
     <div class="comment">
+      <p class="time-border"><%= comment.created_at.strftime("%Y/%m/%d")%></p>
+        <div class="comment-detail">
+          <div class="comment-user-image">
+           <%= image_tag comment.user.image.url, width: "40×40" %>
+          </div>
+          <div class="comment-user-name">  
+          <p class="username"><%= comment.user.name %></p>
+          </div>
+          <div class="comment-time">
+               <p class="timestamp"><%= comment.created_at.strftime("%H:%M") %></p>
+          </div>
+         </div>
       <div class="body">
         <p class="content"><%= comment.content %></p>
       </div>
-      <div class="comment-detail">
-        <p class="timestamp"><%= comment.created_at.strftime("%Y/%m/%d %H:%M") %></p>
-        <p class="username">投稿者 <%= comment.user.name %></p>
-      </div>
+
 
       <div class="comment-edit">
-      <!--コメントしたユーザーとカレンとユーザーが同じ場合には削除ボタンを表示させる-->
-      <% if current_user == comment.user %>
-      <%= link_to '削除', destroy_comment_path(comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "destroy" %>
-      <% end %>
+
       <!-- 編集ボタン -->
-      <button class="edit js-modal-button" data-target="#modal<%= comment.id %>">編集</button>
+      <button class="edit js-modal-button" data-target="#modal<%= comment.id %>">返信</button>
       
       <!-- モーダル -->
       <div id="modal<%= comment.id %>" class="layer js-modal">
@@ -94,14 +102,39 @@
             </div>
           </div>
         </div>
+        <!--モーダルここまで-->
       </div>
+      
+          <!--返信欄-->
+           <div class="reply-list">
+            <% comment.replies.each do |reply| %>
+              <div class="replies">
+                <div class="reply-detail">
+                  <div class="reply-user-image">
+                   <%= image_tag reply.user.image.url, width: "40×40" %>
+                  </div>
+                  <div class="reply-user-name">  
+                  <p class="username"><%= reply.user.name %></p>
+                  </div>
+                  <div class="reply-time">
+                   <p class="timestamp"><%= comment.created_at.strftime("%H:%M") %></p>
+                  </div>
+                 </div>
+                <div class="body">
+                 <p class="content"><%= reply.content %></p>
+                </div>
+               </div>         
+             <% end %>
+            </div>
+    
     </div>
-    <% comment.replies.each do |reply| %>
-    <p><%= reply.content %></p>
-    <p><%= reply.created_at.strftime("%Y/%m/%d %H:%M") %></p>
+    
+    
 
-    <% end %>
+  
+
   <% end %>
 
  <%= link_to '一覧に戻る', index_channel_path %>
+
 </div>

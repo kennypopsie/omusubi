@@ -1,3 +1,6 @@
+p {
+  color: #3B3A3B;
+}
 
 body {
   background-repeat: no-repeat;
@@ -25,7 +28,8 @@ body {
 
 .username {
   margin-left: auto;
-  font-size: 12px;
+  font-size: 15px;
+  font-weight: bold;
 
 }
 
@@ -52,4 +56,12 @@ body {
 }
 .text{
   
+}
+
+.sidebar-title {
+  color: #C9BFCB;
+}
+
+.channel {
+  color: #C9BFCB;
 }
