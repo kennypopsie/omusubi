@@ -35,9 +35,12 @@
         <p class="timestamp"><%= comment.created_at.strftime("%Y/%m/%d %H:%M") %></p>
         <p class="username">投稿者 <%= comment.user.name %></p>
       </div>
-      <div class="comment-edit">
-      <%= link_to '削除', destroy_comment_path(comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "destroy" %>
 
+      <div class="comment-edit">
+      <!--コメントしたユーザーとカレンとユーザーが同じ場合には削除ボタンを表示させる-->
+      <% if current_user == comment.user %>
+      <%= link_to '削除', destroy_comment_path(comment), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "destroy" %>
+      <% end %>
       <!-- 編集ボタン -->
       <button class="edit js-modal-button" data-target="#modal<%= comment.id %>">編集</button>
       
@@ -53,11 +56,10 @@
             </div>
             <div class="modal__contents">
               <div class="modal__content">
-                  <%= form_with(url: create_reply_path(comment.id), local: true, method: :post, html: { class: 'post-form' }) do |f| %>
-                  
-                  
-                  <% end %>
                 
+            <!--コメントしたユーザーとカレンとユーザーが同じ場合にはフォームを表示させる-->
+                 <% if current_user == comment.user %>
+
                   <%= form_with(url: update_comment_path(comment.id), local: true, method: :patch, html: { class: 'post-form' }) do |f| %>
 
                     <div class="form-group">
@@ -69,6 +71,8 @@
                       <%= f.submit '更新', class: 'btn btn-primary' %>
                     </div>
 
+                  <% end %>
+                  
                   <% end %>
 
                        <%= form_with(url: create_reply_path, model: @reply, local: true, method: :post) do |f| %>
@@ -92,12 +96,12 @@
         </div>
       </div>
     </div>
+    <% comment.replies.each do |reply| %>
+    <p><%= reply.content %></p>
+    <p><%= reply.created_at.strftime("%Y/%m/%d %H:%M") %></p>
 
-    
+    <% end %>
   <% end %>
-         <% @replies.each do |reply| %> 
-         <p><%= reply.content %> </p>
 
-         <% end %>
  <%= link_to '一覧に戻る', index_channel_path %>
 </div>
