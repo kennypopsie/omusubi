@@ -2,6 +2,7 @@
                         <div class="comment">
       <div class="body">
         <p class="content"><%= comment.content %></p>
+
       </div>
       <div class="comment-detail">
         <p class="timestamp"><%= comment.created_at.strftime("%Y/%m/%d %H:%M") %></p>
@@ -20,7 +21,6 @@
       </div>
     <% end %>
       </div>
-                     <% end %>
 
                    
         <% @replies.each do |reply| %>
@@ -30,3 +30,12 @@
       </div>
       <% end %>
       
+ 
+    
+                         <% end %>
+
+<!-- コメントIDが2のコメントに対するリプライを表示 -->
+<h3>コメントID 2 に対するリプライ:</h3>
+<% @replies_to_comment_2.each do |reply| %>
+  <p><%= reply.content %></p>
+<% end %>

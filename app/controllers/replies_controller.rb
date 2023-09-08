@@ -5,29 +5,32 @@ def new
 end
   def show
     @reply = Reply.new
-    @comment = Channel.find(2)
+    @comment = Comment.find(params [:comment_id])
     @comments = Comment.all
     @replies = Reply.all
+    @comment_2 = Comment.find(2)  # 2はコメントのIDです
+    @replies_to_comment_2 = @comment_2.replies
     render :show
   end
   
   
-  def create
+    def create
     # インスタンスの作成とパラメーターの取得を許可
-    # reply変数にcomment_idを紐付け。replyいる？    
-
+    # reply_paramsメソッドを使ってパラメータを取得します
+  
     @reply = Reply.new(reply_params)
-    @reply.comment_id = params[:reply][:comment_id] 
     @reply.user_id = current_user.id
-    if @reply.save
-      redirect_to channel_path(params[:id]), notice: 'コメントしました'
-    else
-      # 失敗した場合には app/views/posts/show.html.erb で必要な変数を取得します
-      @channel = Channel.find(params[:id])
-      @comments = Comment.where(channel_id: params[:id])
-      render :show, status: :unprocessable_entity
+  
+      if @reply.save
+        redirect_to channel_path(params[:id]), notice: 'コメントしました'
+      else
+          # 失敗した場合には app/views/posts/show.html.erb で必要な変数を取得します
+          @channel = Channel.find(params[:id])
+          @comments = Comment.where(channel_id: params[:id])
+          render :show, status: :unprocessable_entity
+      end
     end
-  end
+
   
   # def update
   #   @comment = Comment.find(params[:id])
@@ -49,6 +52,6 @@ end
 
   private
   def reply_params
-    params.require(:reply) .permit(:content, :comment_id)
+    params.permit(:content, :comment_id)
   end
 end

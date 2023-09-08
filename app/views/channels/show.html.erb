@@ -53,6 +53,11 @@
             </div>
             <div class="modal__contents">
               <div class="modal__content">
+                  <%= form_with(url: create_reply_path(comment.id), local: true, method: :post, html: { class: 'post-form' }) do |f| %>
+                  
+                  
+                  <% end %>
+                
                   <%= form_with(url: update_comment_path(comment.id), local: true, method: :patch, html: { class: 'post-form' }) do |f| %>
 
                     <div class="form-group">
@@ -69,7 +74,8 @@
                        <%= form_with(url: create_reply_path, model: @reply, local: true, method: :post) do |f| %>
                         <div class="form">
                           <div class="textarea">
-                            <%= f.label "コメント", class: 'form-label' %>
+                            <%= f.label "返信", class: 'form-label' %>
+                            <%= f.hidden_field :comment_id, value: comment.id %>
                             <%= f.text_field :content, class: 'form-control' %>
                           </div>
                           <div class="button-group">
@@ -78,7 +84,8 @@
                         </div>
                     <% end %>
                   
-               </div>
+
+              </div>
              </div>
             </div>
           </div>
@@ -88,5 +95,9 @@
 
     
   <% end %>
+         <% @replies.each do |reply| %> 
+         <p><%= reply.content %> </p>
+
+         <% end %>
  <%= link_to '一覧に戻る', index_channel_path %>
 </div>
