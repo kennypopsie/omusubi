@@ -31,6 +31,16 @@ Rails.application.routes.draw do
   patch 'replies/:id', to: 'replies#update', as: 'update_reply'
   delete 'replies/:id', to: 'replies#destroy', as: 'destroy_reply'
   
+  # post 'comments/comment_id/favorites/:id', to: 'favorites#create', as: 'create_favorite'
+  # delete 'comments/comment_id/favorites/:id', to: 'favorite#destroy', as: 'destroy_favorite'
+  
+  # post_favorites POST   /posts/:post_id/favorites(.:format)      favorites#create
+  # post_favorite DELETE  /posts/:post_id/favorites/:id(.:format)  favorites#destroy
+  
+  
+  resources :comments do
+     resource :favorites, only: [:create, :destroy]
+  end
   
     # ここから追加
   # CommentsController

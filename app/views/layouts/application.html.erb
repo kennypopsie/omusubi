@@ -17,7 +17,8 @@
     <script src="<%= mix('/js/turbo.js') %>"></script>
     <!--modal-window追加-->
     <script src="<%= mix('/js/modal-window.js') %>"></script>
-    
+    <!--fontawesome追加-->
+    <script src="https://kit.fontawesome.com/4ae71b5321.js" crossorigin="anonymous"></script>
     <!--<meta http-equiv="Pragma" content="no-cache">-->
     <!--<meta http-equiv="Cache-Control" content="no-cache">-->
     <!--<meta http-equiv="Expires" content="0">-->
@@ -28,6 +29,8 @@
   <!--<div class="main-container">-->
     <!--  ナビゲーションバー -->
     <nav class="custom-navbar">
+      
+    <P class=site-title>おむすびクラスルーム</p>
      
     <div></div>
      <% if user_signed_in? %>
@@ -48,6 +51,9 @@
 
   <div class="wrapper">
    <div class="side-bar">
+  <br>
+   <div class="sidebar-border"></div>
+  <br>
      <ul>
         <% if user_signed_in? %>
             <!-- ログインしている場合に表示されます -->
@@ -84,9 +90,13 @@
             </li>
           <% end %>
           <!-- ここまで-->
+        </ul>
           
         <% if user_signed_in? %>
-
+        
+        <div class="sidebar-border"></div>
+        
+        <ul>
           <p class="channel">-----チャンネル-----</p>
           
             <li>  

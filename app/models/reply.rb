@@ -4,6 +4,6 @@ class Reply < ApplicationRecord
 
   belongs_to :user, optional: true
   belongs_to :comment
-  
-  
+  has_many :favorites, dependent: :destroy
+
 end

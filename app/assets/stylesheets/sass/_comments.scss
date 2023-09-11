@@ -36,7 +36,7 @@
     // max-width: 800px;
     color: #000;
     text-decoration: none;
-
+    
     .body {
       // display: grid;
       // grid-template-columns: 1fr 100px;
@@ -46,6 +46,8 @@
         margin-bottom: 30px;
         font-size: 17px;
         padding: 5px 25px;
+        white-space: pre-wrap;
+
 
       }
 
@@ -60,6 +62,9 @@
     }
   }
 }
+  .comment:hover {
+    background-color: #F8F8F8;
+  }
 
 .comment-detail {
   display: flex;
@@ -91,10 +96,10 @@
 }
 
 .time-border:before {
-  margin-right: 1rem; 
+  // margin-right: 1rem; 
 }
 .time-border:after {
-  margin-left: 1rem; 
+  // margin-left: 1rem; 
 }
 
 .post-list {

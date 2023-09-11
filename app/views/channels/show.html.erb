@@ -2,7 +2,8 @@
 <div class="post-list">
   <a class="post" href="<%= edit_channel_path(@channel) %>">
     <div class="header">
-      <h2 class="time-border"><%= @channel.title %></h2>
+      <h3 class="time-border"><%= @channel.title %></h3>
+      
     </div>
   </a>
 </div>
@@ -15,8 +16,8 @@
     <%= form_with(url: create_comment_path(@channel), model: @comment, local: true, method: :post) do |f| %>
       <div class="form">
         <div class="textarea">
-          <%= f.label "コメント", class: 'form-label' %>
-          <%= f.text_field :content, class: 'form-control' %>
+          <%= f.label "", class: 'form-label' %>
+          <%= f.text_area :content, placeholder: "コメント", class: 'form-control' %>
         </div>
         <div class="button-group">
           <%= f.submit '送信', class: 'btn btn-primary' %>
@@ -30,7 +31,9 @@
   <% @comments.each do |comment| %>
 
     <div class="comment">
-      <p class="time-border"><%= comment.created_at.strftime("%Y/%m/%d")%></p>
+      <div class="time-wrapper">
+       <p class="time-border"><%= comment.created_at.strftime("%Y/%m/%d")%></p>
+      </div>
         <div class="comment-detail">
           <div class="comment-user-image">
            <%= image_tag comment.user.image.url, width: "40×40" %>
@@ -45,7 +48,29 @@
       <div class="body">
         <p class="content"><%= comment.content %></p>
       </div>
+      <div>
+           <i class="fa-brands fa-font-awesome"></i>
+<i class="fa-solid fa-user-secret"></i>
+<i class="fa-regular fa-bell"></i> 
+<%= icon('fa-brands', 'font-awesome')%>
+<%= icon('fa-solid', 'user-secret')%>
+<%= icon('fa-regular', 'bell')%>
+</div>
+            <!--いいね!ボタン-->
+        <% if current_user.already_favorited?(comment) %>
+            <!--# 一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ-->
+            <%= link_to comment_favorites_path(comment.id), method: :delete do %>
+              <i class="fa-solid fa-heart"></i>
+                <%= comment.favorites.count %> いいね
+            <% end %>
+            <% else %>
+            <!--# 一致するレコードが存在しない＝まだいいねしていない場合はcreateアクションへ-->
+            <%= link_to comment_favorites_path(comment.id), method: :post do %>
+                <i class="fa-regular fa-heart"></i>
+                  <%= comment.favorites.count %> いいね
 
+            <% end %>
+        <% end %>
 
       <div class="comment-edit">
 
@@ -86,9 +111,9 @@
                        <%= form_with(url: create_reply_path, model: @reply, local: true, method: :post) do |f| %>
                         <div class="form">
                           <div class="textarea">
-                            <%= f.label "返信", class: 'form-label' %>
+                            <%= f.label "", class: 'form-label' %>
                             <%= f.hidden_field :comment_id, value: comment.id %>
-                            <%= f.text_field :content, class: 'form-control' %>
+                            <%= f.text_area :content, placeholder: "返信", class: 'form-control' %>
                           </div>
                           <div class="button-group">
                             <%= f.submit '送信', class: 'btn btn-primary' %>

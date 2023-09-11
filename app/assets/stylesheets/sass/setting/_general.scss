@@ -5,6 +5,7 @@ p {
 body {
   background-repeat: no-repeat;
   background-position: center;
+
 }
 
 .main-container {
@@ -64,4 +65,15 @@ body {
 
 .channel {
   color: #C9BFCB;
+}
+
+.sidebar-border {
+  border-bottom: solid 0.5px;
+  
+}
+
+.site-title {
+    padding: 5px;
+    color: white;
+    margin: 0 20px;
 }

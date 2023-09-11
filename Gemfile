@@ -82,3 +82,5 @@ gem 'pry-byebug', group: :development
 gem 'carrierwave'
 
 gem 'mini_magick', '~> 4.5', '>= 4.5.1'
+
+gem 'font-awesome-sass'

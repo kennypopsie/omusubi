@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 mx-auto post-form-container">
-      <h2 class="h2">チャンネル一覧ページ</h2>
+      <h2 class="h2">チャンネル一覧</h2>
          <ul class="channel-index-ul">
-         <% @channels.each do |channel| %>
+         <% @channels.reverse.each do |channel| %>
          <li class="channel-index-list">
          <a class="post" href="<%= channel_path(channel)  %>">
          <h3><%= channel.title %></h3> 

@@ -11,7 +11,11 @@ class User < ApplicationRecord
 
   has_many :comments, dependent: :destroy
   has_many :replies, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   has_one_attached :image
 
+ def already_favorited?(comment)
+  self.favorites.exists?(comment_id: comment.id)
+ end
 end
