@@ -49,13 +49,6 @@
         <p class="content"><%= comment.content %></p>
       </div>
       <div>
-           <i class="fa-brands fa-font-awesome"></i>
-<i class="fa-solid fa-user-secret"></i>
-<i class="fa-regular fa-bell"></i> 
-<%= icon('fa-brands', 'font-awesome')%>
-<%= icon('fa-solid', 'user-secret')%>
-<%= icon('fa-regular', 'bell')%>
-</div>
             <!--いいね!ボタン-->
         <% if current_user.already_favorited?(comment) %>
             <!--# 一致するレコードが存在する＝すでにいいね済みの場合はdestroyアクションへ-->
@@ -75,8 +68,7 @@
       <div class="comment-edit">
 
       <!-- 編集ボタン -->
-      <button class="edit js-modal-button" data-target="#modal<%= comment.id %>">返信</button>
-      
+      <button class="edit js-modal-button fa-solid fa-reply" data-target="#modal<%= comment.id %>">返信</button>
       <!-- モーダル -->
       <div id="modal<%= comment.id %>" class="layer js-modal">
         <div class="modal">

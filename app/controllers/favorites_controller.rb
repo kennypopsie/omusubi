@@ -8,6 +8,7 @@ class FavoritesController < ApplicationController
 
   # @comment_favorite.save
    redirect_to request.referer
+   
   end
 
   def destroy

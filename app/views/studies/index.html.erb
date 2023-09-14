@@ -1,0 +1,23 @@
+<h1>学習室</h1>
+<p>Find me in app/views/studies/new.html.erb</p>
+
+<%= Time.now %>
+
+ストップウォッチを表示
+    <div class="study-start">
+      <%= link_to '学習開始', new_study_path, class: "btn btn-danger" %>
+    </div>
+    
+    <div class="study-end">
+      <%= link_to '学習終了',method: :post, class: "btn btn-danger" %>
+    </div>
+
+    <div class="study-break">
+      <%= link_to '休憩', method: :post,  class: "btn btn-danger" %>
+    </div>
+
+
+今日の学習時間
+
+総学習時間
+

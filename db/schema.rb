@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_08_134102) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_13_072105) do
   create_table "active_storage_attachments", charset: "utf8mb4", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -75,6 +75,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_08_134102) do
     t.index ["user_id"], name: "index_replies_on_user_id"
   end
 
+  create_table "studies", charset: "utf8mb4", force: :cascade do |t|
+    t.time "start_time"
+    t.time "end_time"
+    t.time "break_time"
+    t.string "content"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_studies_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
     t.text "profile"
@@ -98,4 +109,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_08_134102) do
   add_foreign_key "favorites", "users"
   add_foreign_key "replies", "comments"
   add_foreign_key "replies", "users"
+  add_foreign_key "studies", "users"
 end
