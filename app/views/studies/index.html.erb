@@ -9,7 +9,7 @@
     </div>
     
     <div class="study-end">
-      <%= link_to '学習終了',method: :post, class: "btn btn-danger" %>
+      <%= link_to '学習終了', study_path(@study), method: :patch, class: "btn btn-danger" %>
     </div>
 
     <div class="study-break">
@@ -21,3 +21,12 @@
 
 総学習時間
 
+
+
+         <% @studies.each do |study| %>
+        <p><%= study.id %></p> 
+        <P> 開始時刻 <%= study.start_time %> </P>
+           <p>終了時刻<%= study.end_time %> </p> 
+
+          
+          <% end %>
