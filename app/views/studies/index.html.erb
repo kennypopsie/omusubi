@@ -1,13 +1,42 @@
-<h1>学習室</h1>
-<p>Find me in app/views/studies/new.html.erb</p>
+<a href="https://www.google.co.jp/">Google</a>
+
+
+<script>
+// 要素の指定
+// const hrefLink = document.querySelectorAll('.linkList li a');
+// window.addEventListener("DOMContentLoaded", () => {
+// // 指定した要素全てにイベントハンドラを追加
+//   for (i = 0; i < hrefLink.length; i++) {
+// const gtagLink = "window.onbeforeunload = null;"
+// hrefLink[i].setAttribute('onclick', gtagLink);
+// }
+// });
+// console.log(hrefLink)
+// // ページ離脱時の確認メッセージ
+// window.onbeforeunload = function(e) {
+//       e.returnValue = "ページを離れようとしています。よろしいですか？";
+//     }
+
+
+window.addEventListener('beforeunload', (event) => {
+  console.log(event);
+  event.returnValue = '';
+});
+
+</script>
+
+ <div class="device-container">
+
+  <div class="form-container">
+
+
+
+<h1>学習中</h1>
 
 <%= Time.now %>
 
 ストップウォッチを表示
-    <div class="study-start">
-      <%= link_to '学習開始', new_study_path, class: "btn btn-danger" %>
-    </div>
-    
+
     <div class="study-end">
       <%= link_to '学習終了', study_path(@study), method: :patch, class: "btn btn-danger" %>
     </div>
@@ -16,17 +45,8 @@
       <%= link_to '休憩', method: :post,  class: "btn btn-danger" %>
     </div>
 
+              <%= link_to "学習室", new_study_path, class: "nav-link" %>
 
-今日の学習時間
-
-総学習時間
-
-
-
-         <% @studies.each do |study| %>
-        <p><%= study.id %></p> 
-        <P> 開始時刻 <%= study.start_time %> </P>
-           <p>終了時刻<%= study.end_time %> </p> 
-
-          
-          <% end %>
+</div>
+</div>
+          <a href="https://203139ef991942beb0d18ff39d9f0ff4.vfs.cloud9.ap-northeast-1.amazonaws.com/studies/new">Google</a>

@@ -1,4 +1,26 @@
-<div class="study-start">
-      <%= link_to '学習開始', studies_path, method: :post, class: "btn btn-danger" %>
+ <div class="device-container">
+
+  <div class="form-container">
+
+    <div class="study-start">
+      <%= link_to '入室する', studies_path, method: :post, class: "btn btn-danger" %>
+    
     </div>
     
+
+今日の学習時間
+
+総学習時間
+
+
+
+         <% @studies.each do |study| %>
+        <p><%= study.id %></p> 
+        <P> 開始時刻 <%= study.start_time %> </P>
+           <p>終了時刻<%= study.end_time %> </p> 
+
+          
+          <% end %>
+          
+   </div>  
+  </div>
