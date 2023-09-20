@@ -1,9 +1,45 @@
+// <script>
+// document.addEventListener("DOMContentLoaded", function () {
+//   const timerElement = document.getElementById("timer");
+//   const startButton = document.getElementById("startButton");
+//   const stopButton = document.getElementById("stopButton");
+  
+//   let startTime = 0;
+//   let timerInterval;
+
+//   function updateTimer() {
+//     const currentTime = new Date().getTime();
+//     const elapsedTime = currentTime - startTime;
+//     const hours = Math.floor(elapsedTime / 3600000);
+//     const minutes = Math.floor((elapsedTime % 3600000) / 60000);
+//     const seconds = Math.floor((elapsedTime % 60000) / 1000);
+
+//     timerElement.textContent = `${String(hours).padStart(2, "0")}:${String(
+//       minutes
+//     ).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+//   }
+
+//   startButton.addEventListener("click", function () {
+//     startTime = new Date().getTime();
+//     timerInterval = setInterval(updateTimer, 1000); // 1秒ごとに更新
+//   });
+
+//   stopButton.addEventListener("click", function () {
+//     clearInterval(timerInterval);
+//     timerElement.textContent = "00:00:00";
+//     startTime = 0; // タイマーをリセット
+
+//   });
+// });
+
+// </script>
+
  <div class="device-container">
 
   <div class="form-container">
 
     <div class="study-start">
-      <%= link_to '入室する', studies_path, method: :post, class: "btn btn-danger" %>
+      <%= link_to '入室する', studies_path(start: true) , method: :post, id: "startButton", class: "btn btn-danger" %>
     
     </div>
     

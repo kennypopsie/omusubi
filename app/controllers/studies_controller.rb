@@ -1,5 +1,6 @@
 class StudiesController < ApplicationController
     before_action :authenticate_user!
+    layout 'custom_study_layout', only: :index
     
   def new
     @study = Study.new
@@ -20,6 +21,7 @@ class StudiesController < ApplicationController
     @study.start_time = Time.now
     
     if @study.save
+      session[:start] = true
       # idをリダイレクト先に渡す
       redirect_to studies_path(id: @study.id), notice: '学習スタート!!'
     else

@@ -1,8 +1,8 @@
-<a href="https://www.google.co.jp/">Google</a>
+<%= csrf_meta_tags %>
 
 
 <script>
-要素の指定
+// 要素の指定
 const hrefLink = document.querySelectorAll('.linkList li a');
 window.addEventListener("DOMContentLoaded", () => {
 // 指定した要素全てにイベントハンドラを追加
@@ -26,34 +26,6 @@ window.onbeforeunload = function(e) {
 // });
 
 </script>
-
- <div class="device-container">
-
-  <div class="form-container">
-
-
-
-<h1>学習中</h1>
-
-<%= Time.now %>
-
-
-
-ストップウォッチを表示
-
-    <div class="study-end">
-      <%= link_to '学習終了', study_path(@study), method: :patch, class: "btn btn-danger" %>
-    </div>
-
-    <div class="study-break">
-      <%= link_to '休憩', method: :post,  class: "btn btn-danger" %>
-    </div>
-
-              <%= link_to "学習室", new_study_path, class: "nav-link" %>
-
-</div>
-</div>
-          <a href="https://203139ef991942beb0d18ff39d9f0ff4.vfs.cloud9.ap-northeast-1.amazonaws.com/studies/new">Google</a>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -124,10 +96,33 @@ document.addEventListener("DOMContentLoaded", function () {
 // });
 </script>
 
-<div id="timer">00:00:00</div>
 
-<!-- 学習開始ボタン -->
-<button id="startButton">学習開始</button>
 
-<!-- 学習終了ボタン -->
-<button id="stopButton">学習終了</button>
+
+ <div class="device-container">
+
+  <div class="form-container">
+
+
+          
+          <h1>学習中</h1>
+          
+
+    <div class="study-end">
+      <%= link_to '学習終了', study_path(@study), method: :patch, class: "btn btn-danger" %>
+    </div>
+
+    <div class="study-break">
+      <%= link_to '休憩', method: :post,  class: "btn btn-danger" %>
+    </div>
+    <div id="timer">00:00:00</div>
+    
+    <!-- 学習開始ボタン -->
+    <button id="startButton">学習開始</button>
+    
+    <!-- 学習終了ボタン -->
+    <button id="stopButton">学習終了</button>
+　</div>
+</div>
+
+
