@@ -1,5 +1,80 @@
-<%= csrf_meta_tags %>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!--  アプリケーションのタイトル -->
+    <title>Omusubi Classroom</title>
+    <!-- ウェブページがモバイルデバイスやレスポンシブデザインをサポートするブラウザ上でどのように表示されるべきかを制御します。 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- CSRF Token 後の章で説明します -->
+    <%= csrf_meta_tags %>
+    <!-- Railsの機能を使用してアプリケーションのセキュリティを向上させるための記述です -->
+    <%= csp_meta_tag %>
+    <!-- Style -->
+    <link rel="stylesheet" href="<%= mix('/css/app.css') %>">
+    <!-- Javascript -->
+    <script src="<%= mix('/js/bootstrap.js') %>"></script>
+    <!-- turbo.jsを追加します -->
+    <script src="<%= mix('/js/turbo.js') %>"></script>
+    <!--modal-window追加-->
+    <script src="<%= mix('/js/modal-window.js') %>"></script>
+    <!--fontawesome追加-->
+    <script src="https://kit.fontawesome.com/4ae71b5321.js" crossorigin="anonymous"></script>
+    <!--<meta http-equiv="Pragma" content="no-cache">-->
+    <!--<meta http-equiv="Cache-Control" content="no-cache">-->
+    <!--<meta http-equiv="Expires" content="0">-->
 
+  </head>
+
+  <body>
+  <!--<div class="main-container">-->
+    <!--  ナビゲーションバー -->
+    <nav class="custom-navbar">
+      
+    <P class=site-title>おむすびクラスルーム</p>
+     
+    <div></div>
+     <% if user_signed_in? %>
+
+        <ul class="icon-list">
+          <li class="icon"><%= image_tag "kkrn_icon_user_1.png", size: "30x30" %></li>
+          <li class="icon"><%= image_tag "kkrn_icon_user_1.png", size: "30x30" %></li>
+          <li class="icon"><%= image_tag "kkrn_icon_user_1.png", size: "30x30" %></li>
+          <li class="icon"><%= image_tag "kkrn_icon_user_1.png", size: "30x30" %></li>
+          <li class="icon"><%= image_tag "sticker_louie_louie.png", size: "30x30" %></li>
+          <li class="icon"><%= image_tag @user.image.url, width: "25×25" %></li>
+        </ul>
+        
+     <% end %> 
+      
+    </nav>
+
+
+  <div class="wrapper">
+   <div class="side-bar">
+  <br>
+  <br>
+     
+          
+
+
+        
+        
+      </div>
+    <div class="bg-white text-dark">
+          <!-- アラートメッセージ -->
+    <% if notice %>
+      <div class="alert alert-success" role="alert">
+        <%= notice %>
+      </div>
+    <% end %>
+    <% if alert %>
+      <div class="alert alert-danger" role="alert">
+        <%= alert %>
+      </div>
+    <% end %>
+      
+      
+      
 
 <script>
 // 要素の指定
@@ -28,46 +103,13 @@ window.onbeforeunload = function(e) {
 </script>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const timerElement = document.getElementById("timer");
-  const startButton = document.getElementById("startButton");
-  const stopButton = document.getElementById("stopButton");
-  
-  let startTime = 0;
-  let timerInterval;
-
-  function updateTimer() {
-    const currentTime = new Date().getTime();
-    const elapsedTime = currentTime - startTime;
-    const hours = Math.floor(elapsedTime / 3600000);
-    const minutes = Math.floor((elapsedTime % 3600000) / 60000);
-    const seconds = Math.floor((elapsedTime % 60000) / 1000);
-
-    timerElement.textContent = `${String(hours).padStart(2, "0")}:${String(
-      minutes
-    ).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
-  }
-
-  startButton.addEventListener("click", function () {
-    startTime = new Date().getTime();
-    timerInterval = setInterval(updateTimer, 1000); // 1秒ごとに更新
-  });
-
-  stopButton.addEventListener("click", function () {
-    clearInterval(timerInterval);
-    timerElement.textContent = "00:00:00";
-    startTime = 0; // タイマーをリセット
-
-  });
-});
 
 
 // document.addEventListener("DOMContentLoaded", function () {
 //   const timerElement = document.getElementById("timer");
+//   const startButton = document.getElementById("startButton");
 //   const stopButton = document.getElementById("stopButton");
-//   const queryParams = new URLSearchParams(window.location.search);
-//   const startParam = queryParams.get("start");
-
+  
 //   let startTime = 0;
 //   let timerInterval;
 
@@ -83,21 +125,53 @@ document.addEventListener("DOMContentLoaded", function () {
 //     ).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
 //   }
 
-//   if (startParam === "true") {
+//   startButton.addEventListener("click", function () {
 //     startTime = new Date().getTime();
 //     timerInterval = setInterval(updateTimer, 1000); // 1秒ごとに更新
-//   }
+//   });
 
 //   stopButton.addEventListener("click", function () {
 //     clearInterval(timerInterval);
 //     timerElement.textContent = "00:00:00";
 //     startTime = 0; // タイマーをリセット
+
 //   });
 // });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const timerElement = document.getElementById("timer");
+  const stopButton = document.getElementById("stopButton");
+  
+  let startTime = new Date().getTime();
+  let timerInterval;
+
+  function updateTimer() {
+    const currentTime = new Date().getTime();
+    const elapsedTime = currentTime - startTime;
+    const hours = Math.floor(elapsedTime / 3600000);
+    const minutes = Math.floor((elapsedTime % 3600000) / 60000);
+    const seconds = Math.floor((elapsedTime % 60000) / 1000);
+
+    timerElement.textContent = `${String(hours).padStart(2, "0")}:${String(
+      minutes
+    ).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+  }
+
+  // 最初に一度タイマーを開始
+  updateTimer();
+
+  // 1秒ごとにタイマーを更新
+  timerInterval = setInterval(updateTimer, 1000);
+
+  stopButton.addEventListener("click", function () {
+    clearInterval(timerInterval); // タイマーを停止
+  });
+});
 </script>
 
 
-
+  <div id="output"></div>
 
  <div class="device-container">
 
@@ -107,22 +181,30 @@ document.addEventListener("DOMContentLoaded", function () {
           
           <h1>学習中</h1>
           
+    <div class="timer-container"> 
+      <div id="timer">00:00:00</div>
+      
+      <div class="study-end">
+        <%= link_to '学習終了', study_path(@study), method: :patch, class: "btn btn-danger" %>
+      </div>
 
-    <div class="study-end">
-      <%= link_to '学習終了', study_path(@study), method: :patch, class: "btn btn-danger" %>
-    </div>
-
-    <div class="study-break">
-      <%= link_to '休憩', method: :post,  class: "btn btn-danger" %>
-    </div>
-    <div id="timer">00:00:00</div>
     
-    <!-- 学習開始ボタン -->
-    <button id="startButton">学習開始</button>
+    </div>
     
-    <!-- 学習終了ボタン -->
-    <button id="stopButton">学習終了</button>
+  
 　</div>
 </div>
+
+
+
+      
+      
+    </div>
+   </div>
+  <!--</div>-->
+  <!-- Javascript -->
+  <script src="<%= mix('/js/app.js') %>"></script>
+  </body>
+</html>
 
 

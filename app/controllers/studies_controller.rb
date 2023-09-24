@@ -1,6 +1,16 @@
 class StudiesController < ApplicationController
     before_action :authenticate_user!
+    # before_action :latest_study
     layout 'custom_study_layout', only: :index
+   
+   def latest_study
+    latest_study = Study.where(user_id: current_user.id).order(created_at: :desc).first
+
+      if !latest_study.end_time {
+        redirect_to studies_path
+      }
+      end
+   end
     
   def new
     @study = Study.new

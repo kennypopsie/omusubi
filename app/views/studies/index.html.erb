@@ -1,8 +1,7 @@
-<a href="https://www.google.co.jp/">Google</a>
 
 
 <script>
-要素の指定
+// 要素の指定
 const hrefLink = document.querySelectorAll('.linkList li a');
 window.addEventListener("DOMContentLoaded", () => {
 // 指定した要素全てにイベントハンドラを追加
@@ -16,15 +15,6 @@ hrefLink[i].setAttribute('onclick', gtagLink);
 window.onbeforeunload = function(e) {
       e.returnValue = "ページを離れようとしています。よろしいですか？";
     }
-
-
-
-
-// window.addEventListener('beforeunload', (event) => {
-//   console.log(event);
-//   event.returnValue = '';
-// });
-
 </script>
 
  <div class="device-container">

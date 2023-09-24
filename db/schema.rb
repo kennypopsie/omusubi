@@ -76,9 +76,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_13_072105) do
   end
 
   create_table "studies", charset: "utf8mb4", force: :cascade do |t|
-    t.time "start_time"
-    t.time "end_time"
-    t.time "break_time"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.datetime "break_time"
     t.string "content"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
